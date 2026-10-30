@@ -15,7 +15,10 @@ An internal approval queue: team members submit requests for discounts, purchase
 Paste this into Claude Code, Codex or Cursor:
 
 ```text
-Deploy https://github.com/getfloo/approval-queue-template on floo. Follow https://getfloo.com/agents.md.
+Deploy the template at https://github.com/getfloo/approval-queue-template on floo for me.
+Follow https://getfloo.com/agents.md to create a floo-hosted project, replace its
+starter code with this template's files (keep the project's [app] name in
+floo.app.toml), push, and give me the live URL.
 ```
 
 Or by hand: click **Use this template** on GitHub to create your own repository, then connect it to floo. The floo GitHub App must be installed on the repository's owner and linked once with `floo apps github setup`.
