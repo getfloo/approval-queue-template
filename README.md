@@ -2,6 +2,8 @@
 
 An internal approval queue: team members submit requests for discounts, purchases, access or time off, and admins approve or reject them with a comment.
 
+![Approval queue running on floo, with sample data](docs/screenshot.png)
+
 ## What you get
 
 - **Team sign-in with roles.** Invite-only login in front of every page. Members see their own requests; admins see the whole queue and decide.
