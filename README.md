@@ -66,17 +66,17 @@ floo run --service web -- npm run seed
 | `/requests/[id]` | The requester and admins | Details, audit trail, and the approve/reject form for admins |
 | `/queue` | Admins | Every request, filtered by status and category |
 | `/api-docs` | Everyone | The API reference |
-| `/api/*` | App API keys | The JSON API |
+| `/api/*` | Members' floo keys and app API keys | The JSON API |
 
 **Roles.** floo sends each signed-in person's role (`admin` or `member`) to the app. The server checks it on every page and action; hiding a button is never the permission.
 
 **Data model.** One `requests` table: title, category (`discount`, `purchase`, `access`, `time_off`, `other`), optional amount, justification, status (`pending`, `approved`, `rejected`), who submitted it, and who decided, when and with what comment. A request is decided once. A `users` table keeps the people who have signed in.
 
-**API.** Every `/api` call needs an app API key with the `api` scope. To approve or reject, the key also needs `approvals.decide`, and its consumer is recorded as the decider.
+**API.** Call `/api` as yourself with your own floo key, or give a program an app API key with the `api` scope. With your floo key, your role decides what you can do: only admins approve or reject. An app API key also needs `approvals.decide` to approve or reject, and its consumer is recorded as the decider.
 
 | Method | Path | Does |
 | --- | --- | --- |
-| `GET` | `/api/requests?status=&category=` | List requests. Keys with `approvals.decide` see all; others see their own. |
+| `GET` | `/api/requests?status=&category=` | List requests. Admins and keys with `approvals.decide` see all; others see their own. |
 | `POST` | `/api/requests` | Submit a request as the key's consumer |
 | `POST` | `/api/requests/{id}/decision` | Approve or reject a pending request |
 | `GET` | `/api/openapi.json` | The OpenAPI document |
