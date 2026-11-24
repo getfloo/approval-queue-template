@@ -23,12 +23,15 @@ starter code with this template's files (keep the project's [app] name in
 floo.app.toml), push, and give me the live URL.
 ```
 
-Or by hand: click **Use this template** on GitHub to create your own repository, then connect it to floo. The floo GitHub App must be installed on the repository's owner and linked once with `floo apps github setup`.
+Or by hand: click **Use this template** on GitHub to create your own repository, then deploy it from a clone:
 
 ```sh
-floo apps github connect owner/repo
-floo deploys watch
+git clone https://github.com/<you>/<your-repo>.git
+cd <your-repo>
+floo deploy
 ```
+
+`floo deploy` connects your repository, creates the app named in `floo.app.toml` and deploys it. If floo has no access to the repository yet, it stops with a link to install the floo GitHub App; finish that and run `floo deploy` again.
 
 Invite your team. Admins can approve; members can only submit:
 
